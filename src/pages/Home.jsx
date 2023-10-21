@@ -2,31 +2,34 @@ import Header from "../components/Header";
 import Hero from "../components/Hero";
 import {useQuery} from '@tanstack/react-query';
 import {getAllProducts} from '../services/product';
+import ProductCard from "../components/ProductCard";
 
 
 const Home = () => {
 
-    const {data: products, isLoading} = useQuery(['products'],  getAllProducts);
+    const { data: products, isLoading } = useQuery({
+      queryKey: ["products"],
+      queryFn: getAllProducts,
+    });
     if(isLoading){
         return <div>Loading.......</div>
     }
 
+    console.log(products)
+
     return (
+      <div>
         <div>
-            <div>
-                <Header/>
-                <Hero/>
+          <Header />
+          <Hero />
 
-                <div>
-                    {
-                        products?.map((product) => (
-                            <li>{product.name}</li>
-                        ))
-                    }
-                </div>
-
-            </div>
+          <div className="container mx-auto mt-20 flex justify-between gap-5 flex-wrap ">
+            {products?.map((product) => (
+              <ProductCard key={product.id} data={product} />
+            ))}
+          </div>
         </div>
+      </div>
     );
 };
 

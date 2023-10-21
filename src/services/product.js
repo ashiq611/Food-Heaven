@@ -1,6 +1,7 @@
-const baseUrl = "http://127.0.0.1:8000/api/";
+const baseUrl = "http://127.0.0.1:8000/api";
 
 export const getAllProducts = async () => {
-   return fetch(`${baseUrl}/products/`)
-    .then(res => res.json())
+   return fetch(`http://127.0.0.1:8000/api/products/`).then((res) =>
+     res.json()
+   );
 }
