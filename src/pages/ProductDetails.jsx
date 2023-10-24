@@ -13,7 +13,11 @@ const ProductDetails = () => {
       queryFn: () => getAllProductById(id),
     });
     if (isLoading) {
-      return <div>Loading.......</div>;
+      return (
+        <div className="m-auto">
+          <span className="loading loading-bars loading-lg"></span>
+        </div>
+      );
     }
     return (
       <div>

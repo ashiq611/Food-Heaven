@@ -13,7 +13,11 @@ const Home = () => {
       queryFn: getAllProducts,
     });
     if(isLoading){
-        return <div>Loading.......</div>
+        return (
+          <div className="min-h-screen">
+            <span className="loading loading-bars loading-lg"></span>
+          </div>
+        );
     }
 
     console.log(products)

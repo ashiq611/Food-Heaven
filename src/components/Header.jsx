@@ -1,8 +1,11 @@
 
+import { useContext } from "react";
 import { NavLink} from "react-router-dom";
+import { AuthContext } from "../contexts/Auth";
 
 
 const Header = () => {
+  const authContext = useContext(AuthContext);
   return (
     <div>
       <header>
@@ -56,9 +59,10 @@ const Header = () => {
                 <li>
                   <NavLink to="/order-list">Order List</NavLink>
                 </li>
-                <li>
-                  <button>Logout</button>
-                </li>
+                <li>{authContext.isLoggedIn && (
+                  <button onClick={() => authContext.logout()}>Logout</button>
+                )
+                }</li>
               </ul>
             </div>
           </div>
