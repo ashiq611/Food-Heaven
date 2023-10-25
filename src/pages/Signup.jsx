@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
 
+  const navigate = useNavigate();
+
   
 
   const [error, setError] = useState([]);

@@ -6,7 +6,17 @@ export const AuthContext = createContext();
 
 const storedToken = () => {
     const token = localStorage.getItem('token');
-    const user = JSON.parse(localStorage.getItem("user"));
+    let user = null;
+    try {
+      const userData = localStorage.getItem("user");
+      if (userData) {
+        user = JSON.parse(userData);
+      }
+    } catch (error) {
+      // Handle the error, e.g., by logging or setting user to null.
+      console.error("Error parsing 'user' data:", error);
+      user = null;
+    }
 
     return { token, user}
 }
