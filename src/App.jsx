@@ -5,17 +5,20 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // import {useContext} from 'react'
 import AuthContextProvider from "./contexts/Auth";
 import "./App.css";
+import CartProvider from "./contexts/Cart";
 
 const Queryclient = new QueryClient();
 function App() {
   return (
     <>
-        <AuthContextProvider>
       <QueryClientProvider client={Queryclient}>
         <ReactQueryDevtools initialIsOpen={false} />
-          <Router />
-      </QueryClientProvider>
+        <AuthContextProvider>
+          <CartProvider>
+            <Router />
+          </CartProvider>
         </AuthContextProvider>
+      </QueryClientProvider>
     </>
   );
 }
