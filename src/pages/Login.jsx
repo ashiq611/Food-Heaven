@@ -33,7 +33,7 @@ const Login = () => {
           });
         } else if (!res.ok && res.status === 400) {
           return res.json().then((err) => {
-            setError(err.non_field_errors[0]);
+            setError(err.message);
           });
         }
       })

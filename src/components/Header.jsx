@@ -35,34 +35,61 @@ const Header = () => {
                 <li>
                   <NavLink to="/">Homes</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/signup">Signup</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/login">Login</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/admin/products">Products</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/admin/users">Users</NavLink>
-                </li>
+                {!authContext.isLoggedIn && (
+                  <li>
+                    <NavLink to="/signup">Signup</NavLink>
+                  </li>
+                )}
+                {!authContext.isLoggedIn && (
+                  <li>
+                    <NavLink to="/login">Login</NavLink>
+                  </li>
+                )}
+                {authContext.isLoggedIn &&
+                  (authContext?.user?.special_user === "super-admin" ||
+                    authContext?.user?.special_user === "admin") && (
+                    <li>
+                      <NavLink to="/admin/products">Products</NavLink>
+                    </li>
+                  )}
+                {authContext.isLoggedIn &&
+                  (authContext?.user?.special_user === "super-admin" ||
+                    authContext?.user?.special_user === "admin") && (
+                    <li>
+                      <NavLink to="/admin/users">Users</NavLink>
+                    </li>
+                  )}
+
                 <li>
                   <NavLink to="/cart">Cart</NavLink>
                 </li>
-                <li>
-                  <NavLink to="/admin/product-form">Add Product</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/my-orders">My Orders</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/order-list">Order List</NavLink>
-                </li>
-                <li>{authContext.isLoggedIn && (
-                  <button onClick={() => authContext.logout()}>Logout</button>
-                )
-                }</li>
+
+                {authContext.isLoggedIn &&
+                  (authContext?.user?.special_user === "super-admin" ||
+                    authContext?.user?.special_user === "admin") && (
+                    <li>
+                      <NavLink to="/admin/product-form">Add Product</NavLink>
+                    </li>
+                  )}
+
+                {authContext.isLoggedIn && (
+                  <li>
+                    <NavLink to="/my-orders">My Orders</NavLink>
+                  </li>
+                )}
+                {authContext.isLoggedIn &&
+                  (authContext?.user?.special_user === "super-admin" ||
+                    authContext?.user?.special_user === "admin") && (
+                    <li>
+                      <NavLink to="/order-list">Order List</NavLink>
+                    </li>
+                  )}
+
+                {authContext.isLoggedIn && (
+                  <li>
+                    <button onClick={() => authContext.logout()}>Logout</button>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
