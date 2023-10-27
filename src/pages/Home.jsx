@@ -14,8 +14,8 @@ const Home = () => {
     });
     if(isLoading){
         return (
-          <div className="min-h-screen">
-            <span className="loading loading-bars loading-lg"></span>
+          <div className="min-h-screen min-w-full flex justify-center items-center">
+            <span className=" loading loading-bars loading-lg"></span>
           </div>
         );
     }
