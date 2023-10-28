@@ -47,23 +47,10 @@ const CartItem = ({ item }) => {
     disPatchCartAction({ type: REMOVE_ITEM_FROM_CART, payload: item.id });
   };
 
-  // optional
-
-  // const handleIncrement = () => {
-  //   setQuantity(quantity + 1);
-  //   incrementQuantity(item.id);
-  // };
-
-  // const handleDecrement = () => {
-  //   if (quantity > 1) {
-  //     setQuantity(quantity - 1);
-  //     decrementQuantity(item.id);
-  //   }
-  // };
   return (
     <div>
-      <div className="flex items-center space-x-4">
-        <div className="w-16 h-16">
+      <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4">
+        <div className="w-16 h-16 md:w-32 md:h-32">
           <img src={item.photo} alt={item.title} />
         </div>
         <div className="flex-1">
@@ -77,7 +64,7 @@ const CartItem = ({ item }) => {
         <div className="text-red-600 cursor-pointer" onClick={HandleRemove}>
           Remove
         </div>
-        <div className="space-x-2">
+        <div className="flex space-x-2">
           <button
             onClick={handleDecrement}
             className="text-sm text-gray-600 px-2 py-1 border rounded-full hover:bg-gray-100"
@@ -85,7 +72,7 @@ const CartItem = ({ item }) => {
             -
           </button>
           <input
-            className="text-lg"
+            className="text-lg border border-gray-400 rounded-md w-16 md:w-20 h-10 text-center"
             type="number"
             value={quantity}
             min="1"
