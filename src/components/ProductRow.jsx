@@ -12,7 +12,7 @@ const ProductRow = ({ product }) => {
     mutationFn: (id) => removeProduct(id),
     onSuccess: () => {
       // Invalidate and refetch
-      () => queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries({ queryKey: ["products"] });
     },
   });
 
