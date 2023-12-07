@@ -1,35 +1,35 @@
-import { useContext } from "react";
+
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../contexts/Cart";
-import { ADD_TO_CART } from "../actions/cart";
 
 
-const ProductCard = ({data}) => {
+
+const ProductCard = ({img}) => {
     // cosnt {name, description, price , photo} = data
 
     const navigate = useNavigate()
-    const { disPatchCartAction } = useContext(CartContext);
+    
 
-    const HandleBuy = (e) => {
-      e.stopPropagation();
-      disPatchCartAction({type: ADD_TO_CART, payload: data})
-    }
+    
 
 
 
 
     return (
-      <div onClick={() => navigate(`/products/${data.id}`)}>
+      <div onClick={() => navigate(`/products/8`)}>
         <div className="card w-96 h-[400px] bg-base-100 shadow-xl">
           <figure>
-            <img src={data.photo} alt="Shoes" className="max-w-md" />
+            <img
+              src={img}
+              alt="Shoes"
+              className="max-w-md"
+            />
           </figure>
           <div className="card-body">
-            <h2 className="card-title">{data.name}</h2>
-            <p>{data.description}</p>
-            <p>${data.price}</p>
+            <h2 className="card-title">food</h2>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Nostrum, quibusdam.</p>
+            <p>$50</p>
             <div className="card-actions justify-end">
-              <button className="btn btn-primary" onClick={HandleBuy}>
+              <button className="btn btn-primary">
                 Buy Now
               </button>
             </div>

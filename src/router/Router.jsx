@@ -11,8 +11,7 @@ import Users from "./../pages/Users";
 import ProductEditForm from "./../pages/ProductEditForm";
 import Products from "./../pages/Products";
 import ProductDetails from "./../pages/ProductDetails";
-import PrivateRoute from "../components/PrivateRoute";
-import PrivateAdminRoute from "../components/PrivateAdminRoute";
+
 
 const Router = () => {
   return (
@@ -25,57 +24,57 @@ const Router = () => {
         <Route
           path="/order-placing-form"
           element={
-            <PrivateRoute>
+           
               <AddressForm />
-            </PrivateRoute>
+        
           }
         />
         <Route
           path="/my-orders"
           element={
-            <PrivateRoute>
+         
               <MyOrders />
-            </PrivateRoute>
+           
           }
         />
         <Route
           path="/order-list"
           element={
-            <PrivateAdminRoute>
+            
               <OrderList />
-            </PrivateAdminRoute>
+          
           }
         />
         <Route
           path="/admin/product-form"
           element={
-            <PrivateAdminRoute>
+          
               <ProductAddForm />
-            </PrivateAdminRoute>
+           
           }
         />
         <Route
           path="/admin/users"
           element={
-            <PrivateAdminRoute>
+        
               <Users />
-            </PrivateAdminRoute>
+            
           }
         />
         <Route
           path="/admin/products"
           element={
-            <PrivateAdminRoute>
+            
               <Products />
-            </PrivateAdminRoute>
+           
           }
         />
         <Route
           path="/admin/product-edit-form/:id"
           element={
-            <PrivateAdminRoute>
+            
               <ProductEditForm />
-            </PrivateAdminRoute>
+          
           }
         />
         <Route path="/products/:id" element={<ProductDetails />} />

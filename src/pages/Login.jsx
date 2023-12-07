@@ -1,54 +1,23 @@
-import { useContext, useRef, useState } from "react";
+
 import Header from "../components/Header";
-import { AuthContext } from "./../contexts/Auth";
-import { useNavigate } from "react-router-dom";
+
 
 const Login = () => {
-  const navigate = useNavigate();
+ 
 
-  const userNameInputRef = useRef();
-  const passInputRef = useRef();
-  const [error, setError] = useState("");
+ 
 
-  const authContext = useContext(AuthContext);
+ 
+const error = "bad error"
+  
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    fetch(`http://127.0.0.1:8000/api/auth/`, {
-      method: "POST",
-      headers: {
-        "Content-type": "application/json",
-      },
-      body: JSON.stringify({
-        username: userNameInputRef.current.value,
-        password: passInputRef.current.value,
-      }),
-    })
-      .then((res) => {
-        if (res.ok && res.status !== 400) {
-          return res.json().then((data) => {
-            authContext.login(data.user, data.token);
-            navigate("/");
-          });
-        } else if (!res.ok && res.status === 400) {
-          return res.json().then((err) => {
-            setError(err.message);
-          });
-        }
-      })
-      .catch((err) => {
-        alert(err);
-      });
-  };
-
-  console.log(error)
+ 
 
   return (
     <div>
       <Header />
 
-      {error && (
+    
         <div>
           <div className="alert alert-error">
             <svg
@@ -67,7 +36,7 @@ const Login = () => {
             <span>{error}</span>
           </div>
         </div>
-      )}
+ 
 
       <div>
         <div className="hero min-h-screen bg-base-200">
@@ -81,7 +50,7 @@ const Login = () => {
               </p>
             </div>
             <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-              <form onSubmit={handleSubmit} className="card-body">
+              <form className="card-body">
                 <div className="form-control">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -90,7 +59,7 @@ const Login = () => {
                     type="text"
                     placeholder="email"
                     className="input input-bordered"
-                    ref={userNameInputRef}
+                    
                     required
                   />
                 </div>
@@ -102,7 +71,7 @@ const Login = () => {
                     type="password"
                     placeholder="password"
                     className="input input-bordered"
-                    ref={passInputRef}
+                  
                     required
                   />
                   <label className="label">

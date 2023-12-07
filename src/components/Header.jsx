@@ -1,11 +1,11 @@
 
-import { useContext } from "react";
-import { NavLink} from "react-router-dom";
-import { AuthContext } from "../contexts/Auth";
+
+import { Link, NavLink} from "react-router-dom";
+
 
 
 const Header = () => {
-  const authContext = useContext(AuthContext);
+
   return (
     <div>
       <header>
@@ -35,66 +35,59 @@ const Header = () => {
                 <li>
                   <NavLink to="/">Homes</NavLink>
                 </li>
-                {!authContext.isLoggedIn && (
+              
                   <li>
                     <NavLink to="/signup">Signup</NavLink>
                   </li>
-                )}
-                {!authContext.isLoggedIn && (
+                
+               
                   <li>
                     <NavLink to="/login">Login</NavLink>
                   </li>
-                )}
-                {authContext.isLoggedIn &&
-                  (authContext?.user?.special_user === "super-admin" ||
-                    authContext?.user?.special_user === "admin") && (
+                
+                
                     <li>
                       <NavLink to="/admin/products">Products</NavLink>
                     </li>
-                  )}
-                {authContext.isLoggedIn &&
-                  (authContext?.user?.special_user === "super-admin" ||
-                    authContext?.user?.special_user === "admin") && (
+              
+               
+                
                     <li>
                       <NavLink to="/admin/users">Users</NavLink>
                     </li>
-                  )}
+                
 
                 <li>
                   <NavLink to="/cart">Cart</NavLink>
                 </li>
 
-                {authContext.isLoggedIn &&
-                  (authContext?.user?.special_user === "super-admin" ||
-                    authContext?.user?.special_user === "admin") && (
+              
                     <li>
                       <NavLink to="/admin/product-form">Add Product</NavLink>
                     </li>
-                  )}
+                
 
-                {authContext.isLoggedIn && (
+               
                   <li>
                     <NavLink to="/my-orders">My Orders</NavLink>
                   </li>
-                )}
-                {authContext.isLoggedIn &&
-                  (authContext?.user?.special_user === "super-admin" ||
-                    authContext?.user?.special_user === "admin") && (
+                
+                
                     <li>
                       <NavLink to="/order-list">Order List</NavLink>
                     </li>
-                  )}
+                  
 
-                {authContext.isLoggedIn && (
+                
                   <li>
-                    <button onClick={() => authContext.logout()}>Logout</button>
+                    <button>Logout</button>
                   </li>
-                )}
+              
               </ul>
             </div>
           </div>
           <div className="navbar-center">
-            <a className="btn btn-ghost normal-case text-xl">Bazar.com</a>
+            <Link to="/" className="btn btn-ghost normal-case text-xl">Food-Heaven</Link>
           </div>
           <div className="navbar-end">
             <button className="btn btn-ghost btn-circle">

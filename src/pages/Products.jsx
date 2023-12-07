@@ -1,23 +1,10 @@
 
 import ProductRow from "../components/ProductRow";
-import { useQuery } from "@tanstack/react-query";
-import { getAllProducts } from "../services/product";
+
 import Header from "../components/Header";
 
 const Products = () => {
-  const { data: products, isLoading } = useQuery({
-    queryKey: ["products"],
-    queryFn: getAllProducts,
-  });
-
-  if (isLoading) {
-    return (
-      <div className="min-h-screen min-w-full flex justify-center items-center">
-        <span className=" loading loading-bars loading-lg"></span>
-      </div>
-    );
-  }
-
+  
   
 
   
@@ -26,7 +13,7 @@ const Products = () => {
   return (
     <div>
       <Header />
-      <div className="w-full p-4">
+      <div className="container mx-auto w-full p-4">
         <div className="text-3xl font-semibold mb-4">Product List</div>
 
         <table className="w-full border-collapse">
@@ -39,12 +26,9 @@ const Products = () => {
             </tr>
           </thead>
           <tbody>
-            {products?.length !== 0 && products?.map((product) => (
-              <ProductRow
-                key={product.id}
-                product={product}
-              />
-            ))}
+           
+              <ProductRow/>
+          
           </tbody>
         </table>
       </div>
